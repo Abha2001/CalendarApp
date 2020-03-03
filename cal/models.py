@@ -13,9 +13,6 @@ class Event(models.Model):
 	class Meta:
 		verbose_name_plural='Events'
 
-	def get_absolute_url(self):
-		url=reverse('admin:cal_%s_change'%(self._meta.model_name),args=[self.id])
-		return '<a href="%s">%s</a>'%(url,str(self.notes))
 
 	def get_html_url(self):
 		url=reverse('cal:event_edit',args=[self.id])
