@@ -9,6 +9,9 @@ class Event(models.Model):
 	start_time=models.TimeField()
 	end_time=models.TimeField()
 	notes=models.CharField(max_length=200)
+	
+	def __str__(self):
+		return self.notes
 
 	class Meta:
 		verbose_name_plural='Events'
