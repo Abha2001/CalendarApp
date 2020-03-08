@@ -13,9 +13,6 @@ class Event(models.Model):
 	def __str__(self):
 		return self.notes
 
-	def __str__(self):
-		return self.notes
-
 	class Meta:
 		verbose_name_plural='Events'
 
