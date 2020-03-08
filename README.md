@@ -17,7 +17,6 @@ This is a Calendar App made using Django,HTML,CSS. Events can be added ,modified
 
 `git clone https://github.com/Abha2001/CalendarApp.git`
 
-<<<<<<< HEAD
 * Change the directory
 
 `cd CalendarApp`
