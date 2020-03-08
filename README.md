@@ -1,43 +1,44 @@
-CalendarApp
+# CalendarApp
 
 This is a Calendar App made using Django,HTML,CSS. Events can be added ,modified and dispalyed in this calendar app. it gives a monthly view.
 
-Getting started
+## Getting started
 
-.Move into the desired folder
+* Move into the desired folder
 
-.Create virtual environment
+* Create virtual environment
 
->python3 -m venv venv
->source venv/bin/activate  
+`python3 -m venv venv`
 
-.Clone the repo
+`source venv/bin/activate`  
 
->git clone https://github.com/Abha2001/CalendarApp.git
+* Clone the repo
 
-.Change the directory
+`git clone https://github.com/Abha2001/CalendarApp.git`
 
->cd CalendarApp
+* Change the directory
 
-.install django
+`cd CalendarApp`
 
->pip install django
+* install django
 
-.run migrations
+`pip install django`
 
->python manage.py makemigrations
+* run migrations
 
->python manage.py migrate
+`python manage.py makemigrations`
 
->Run the server
+`python manage.py migrate`
 
->python manage.py runserver
+* run the server
 
-.Go to server localhost:8000 to see the calendar
+`python manage.py runserver`
 
-Prerequisites
+* Go to server localhost:8000 to see the calendar
 
-#python3
+# Prerequisites
+
+python3
 
 
 
