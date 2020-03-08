@@ -2,13 +2,15 @@
 
 {% block content %}
 <div class="clearfix">
+<div class="clearfix">
 	<a class="btn btn-info left" href="{% url 'cal:calendar'%}?day_gte={{prev_month}}"> Previous Month </a>
 	<a class="btn btn-info right" href="{% url 'cal:calendar'%}?day_gte={{next_month}}"> Next Month </a>
 </div>
-
-{{calendar}}
-<div>
+<div class="clearfix">
 	<a class="btn btn-info right" href="{% url 'cal:event_new'%}"> Add Event </a>
 </div>
+</div>
+
+{{calendar}}
 
 {% endblock %}
