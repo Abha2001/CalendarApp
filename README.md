@@ -42,4 +42,6 @@ This is a Calendar App made using Django,HTML,CSS. Events can be added ,modified
 
 python3
 
-![](images/Calendar.png)
+### The screenshot of the App
+
+![](cal/images/Calendar.png)
