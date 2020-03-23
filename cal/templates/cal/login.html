@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/35d827aa1e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../static/cal/css/login.css">
+</head>
+<body>
+    <div class='container'>
+        <div class="img">
+            <img class='calendar_image' src="{% static 'cal/images/calendar2.svg'%}">
+        </div>
+        <div class="login-container">
+            <form class="form" method="post">
+                <img class='profile' src="{% static 'cal/images/profile.svg'%}">
+        
+                {% csrf_token %}
+                {% if message %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>
+                        {{message}}
+                    </strong>
+                </div>
+                {%endif%}
+                <h2>
+                    Welcome
+                </h2>
+                <div class="input-div focus">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <!-- <label class="username">User Name</label> -->
+                        <input class="input" type="text" name="username" placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-lock">
+                        </i>
+                    </div>
+                    <div>
+                        <!-- <label class="password"for="id_password">Password</label> -->
+                        <input class="input" type="password" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+                <button class="btn" type="submit" style="width: 100px;">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% load static %}
+
+
+    
+
+    
+
+

@@ -13,8 +13,6 @@ class EventCalendar(HTMLCalendar):
 		for event in eventsInOneDay:
 			events_html+=event.get_html_url()+"<br>"
 		events_html+="</ul>"
-		
-
 		if day==0:
 			return '<td class="noday">&nbsp;</td>'
 		return '<td class="date">%d%s</td>'%(day,events_html)
@@ -22,6 +20,7 @@ class EventCalendar(HTMLCalendar):
 	def formatweek(self,theweek,events):
 		s=''.join(self.formatday(d,wd,events) for (d,wd) in theweek)
 		return '<tr>%s</tr>'%s
+
 
 	def formatmonth(self,theyear,themonth,withyear=True):
 		events=Event.objects.filter(day__month=themonth)

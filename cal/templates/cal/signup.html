@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="../static/cal/css/signup.css">
+    
+</head>
+<body>
+    <div class='container'>
+        <div class="img">
+            <img class='calendar_image' src="{% static 'cal/images/calendar2.svg'%}">
+        </div>
+        <div class="login-container">
+            <form class="form" method="post">
+                <img class='profile' src="{% static 'cal/images/profile.svg'%}">
+            <h2>
+                Signup
+            </h2>
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="SignUp">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -6,8 +6,12 @@ from django.views import generic
 from django.utils.safestring import mark_safe
 from .models import *
 from .utils import EventCalendar
-from django.urls import reverse
 from .forms import EventForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import login,logout,authenticate
 
 class CalendarView(generic.ListView):
     model = Event
@@ -34,6 +38,8 @@ class CalendarView(generic.ListView):
         context['prev_month']=str(prev_month(d))
         context['next_month']=str(next_month(d))
         return context
+def index(request):
+    return render(request,'cal/base.html')
 
 def prev_month(d):
     first=d.replace(day=1)
@@ -48,15 +54,51 @@ def next_month(d):
     month=str(next_month.year)+'-'+str(next_month.month)
     return month
 
-def event(request,event_id=None):
-    instance=Event()
-    if event_id:
-        instance=get_object_or_404(Event,pk=event_id)
-    else:
-        instance=Event()
-
-    form=EventForm(request.POST or None,instance=instance)
-    if request.POST and form.is_valid():
-        form.save()
-        return HttpResponseRedirect(reverse('cal:calendar'))
+@login_required(login_url='/cal/login')
+def new_event(request):
+    form=EventForm()
+    if request.method=='POST':
+        form=EventForm(request.POST or None)
+        if request.POST and form.is_valid():
+            form.save(user_id=request.user.pk)
+            return redirect('cal:calendar')
     return render(request,'cal/event.html',{'form':form})
+
+@login_required(login_url='/cal/login')
+def edit_event(request,event_id):
+    instance=get_object_or_404(Event,id=event_id)
+    form=EventForm(request.POST or None,instance=instance)
+    if request.method=='POST':
+        if form.is_valid() and instance.name.pk==request.user.pk:
+            form.save(user_id=request.user.pk)
+            return redirect('cal:calendar')
+    return render(request,'cal/event.html',{'form':form})
+
+def signup(request):
+    if request.method=='POST':
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            user=form.save()
+            login(request,user)
+            return redirect('cal:calendar')
+    else:
+        form = UserCreationForm()
+    return render(request,'cal/signup.html',{'form':form})
+
+def login_view(request):
+    message=False
+    if request.method=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user=authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('cal:calendar')
+        else:
+            message='Invalid Username or Password'
+    return render(request,'cal/login.html',{'message':message})
+
+def logout_views(request):
+    logout(request)
+    return redirect('cal:calendar') 
+

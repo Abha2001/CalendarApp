@@ -1,0 +1,95 @@
+ 
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  
+  .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 7rem;
+    padding: 2rem;
+  }
+
+  .img img{
+    margin: 150px;
+    width:700px;
+  }
+
+  .login-container{
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  form{ 
+    margin-left: 10px;
+    padding: 30px;
+    width: 360px;
+  }
+  
+  .profile
+  {
+     width: 200px;
+  }
+  
+form h2{
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 15px 0;
+  color:#333;
+}
+
+input[type="submit"]{
+    width:50%;
+      height:50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #646ade,#4b52db,#3d45eb);
+    cursor: pointer;
+    color:#fff;
+    background-size: 200%;
+    text-transform: uppercase;
+  }
+  
+  input[type="submit"]:hover{
+    background-position: right;
+    color:#d9d9d9;
+    font-size:20px;
+  }
+
+input{
+  width: 100%;
+   margin: 2px 0;
+  padding: 10px ;
+  border-bottom: 2px solid #d9d9d9;
+  border-radius: 20px;
+}
+
+.helptext, .helptext ul{
+  margin: 0 auto 20px;
+  color: #bbb;
+  font-size: 0;
+  display: block;
+}
+
+.errorlist li{
+  margin: 10px 0;
+  padding: 5px 2px;
+  list-style-type: none;
+  border: 3px solid #ff5722;
+  color: #ff5722
+}
+
+.errorlist{
+  padding: 5px
+}
+label{
+  font-size: 15px;
+  color: #bbb;
+  text-transform: uppercase
+}
